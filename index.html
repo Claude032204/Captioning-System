@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WhisperType</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1 class="app-title">WhisperType</h1>
+
+      <div class="header-rotator">
+        <p class="rotating-text active" id="subtitle">
+          Captioning & Transcription System
+        </p>
+        <p class="rotating-text" id="tagline">
+          Upload • Preview • Transcribe • Format
+        </p>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <!-- LEFT: UPLOAD + PREVIEW -->
+      <section class="panel left-panel">
+        <div class="panel-header">
+          <h2>Video / Audio</h2>
+          <p class="sub">Drag & drop a file or browse to upload.</p>
+        </div>
+
+        <div class="card">
+          <!-- Drag & Drop Zone -->
+          <div
+            id="dropZone"
+            class="drop-zone"
+            tabindex="0"
+            role="button"
+            aria-label="Upload by drag and drop"
+          >
+            <div class="drop-zone-inner">
+              <div class="drop-icon">⬆</div>
+              <div class="drop-title">Drag & drop your file here</div>
+              <div class="drop-sub">or click to browse</div>
+              <div class="drop-hint">Accepted: MP4, MP3, WAV</div>
+            </div>
+
+            <!-- hidden real input -->
+            <input type="file" id="fileInput" accept=".mp4,.mp3,.wav" hidden />
+          </div>
+
+          <button id="uploadBtn" disabled>Upload & Process</button>
+          <p class="hint">
+            Tip: You can also paste captions on the right panel anytime.
+          </p>
+        </div>
+
+        <div class="card hidden" id="previewCard">
+          <label class="label">Preview</label>
+
+          <video
+            id="videoPreview"
+            class="preview-player hidden"
+            controls
+          ></video>
+          <audio
+            id="audioPreview"
+            class="preview-player hidden"
+            controls
+          ></audio>
+
+          <p class="file-meta" id="fileMeta"></p>
+        </div>
+
+        <div class="card hidden" id="progressCard">
+          <label class="label">Processing</label>
+
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <p id="progressText" class="status">Waiting...</p>
+        </div>
+      </section>
+
+      <!-- RIGHT: CAPTIONS -->
+      <section class="panel right-panel">
+        <div class="panel-header">
+          <h2>Captions Output</h2>
+          <p class="sub">Review and export captions here.</p>
+        </div>
+
+        <div class="card captions-card">
+          <label class="label">Captions</label>
+          <textarea
+            id="resultText"
+            placeholder="Captions will appear here..."
+          ></textarea>
+
+          <div class="actions">
+            <button id="copyBtn" class="secondary" disabled>Copy</button>
+            <button id="downloadBtn" class="secondary" disabled>
+              Download
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
